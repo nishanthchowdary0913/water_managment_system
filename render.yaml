@@ -6,12 +6,8 @@ services:
     healthCheckPath: /test_connection.php
     envVars:
       - key: DB_PATH
-        value: "/var/data/water_management.sqlite3"
+        value: "/tmp/water_management.sqlite3"
       - key: ADMIN_USERNAME
         value: "admin"
       - key: ADMIN_PASSWORD
         generateValue: true
-    disk:
-      name: water-management-data
-      mountPath: /var/data
-      sizeGB: 1

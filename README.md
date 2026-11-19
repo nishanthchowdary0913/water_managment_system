@@ -13,7 +13,7 @@ PHP/SQLite application for managing village water facilities, supply availabilit
 Set `DB_PATH` to the writable SQLite file location.
 
 - Default local value: `data/water_management.sqlite3`
-- Render value: `/var/data/water_management.sqlite3`
+- Free Render value: `/tmp/water_management.sqlite3` (ephemeral)
 
 ## Deploy
 
