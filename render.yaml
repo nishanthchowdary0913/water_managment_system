@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: village-water-management
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /test_connection.php
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
