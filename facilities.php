@@ -1,0 +1,136 @@
+<?php
+include "db_connect.php";
+
+$sql = "SELECT * FROM water_facilities ORDER BY created_at DESC";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Facilities</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0369a1;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+            min-width: 650px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Village Water Management System</h1>
+    <p>Water Facilities and Drinking Water Availability</p>
+    <p>Kotha Vellanti Village</p>
+</header>
+
+<nav>
+    <a href="index.php">Home</a>
+    <a href="about.php">About</a>
+    <a href="facilities.php">Facilities</a>
+    <a href="availability.php">Availability</a>
+    <a href="complaint.php">Complaints</a>
+    <a href="login.php">Admin Login</a>
+    <a href="register.php">Resident Register</a>
+    <a href="resident_login.php">Resident Login</a>
+</nav>
+
+<div class="container">
+
+    <h2>Village Water Facilities</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Facility Name</th>
+                <th>Facility Type</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Description</th>
+            </tr>
+
+            <?php if ($result && $result->num_rows > 0) { ?>
+
+                <?php while ($row = $result->fetch_assoc()) { ?>
+
+                    <tr>
+                        <td>
+                            <?php echo htmlspecialchars($row["facility_name"]); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row["facility_type"]); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row["location"]); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row["status"]); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row["description"]); ?>
+                        </td>
+                    </tr>
+
+                <?php } ?>
+
+            <?php } else { ?>
+
+                <tr>
+                    <td colspan="5">No water facilities found.</td>
+                </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </div>
+
+    <a href="index.php" class="btn back-link">Back to Home</a>
+
+</div>
+
+<footer>
+    <p>Village Water Management System</p>
+    <p>Developed for Kotha Vellanti Village</p>
+</footer>
+
+</body>
+</html>

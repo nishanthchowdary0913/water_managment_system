@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: village-water-management
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /test_connection.php
+    envVars:
+      - key: DB_PATH
+        value: "/tmp/water_management.sqlite3"
+      - key: ADMIN_USERNAME
+        value: "admin"
+      - key: ADMIN_PASSWORD
+        generateValue: true
